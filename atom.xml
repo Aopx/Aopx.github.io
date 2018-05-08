@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-07T11:49:00.560Z</updated>
+  <updated>2018-05-08T05:44:53.293Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaWeb同学管理系统</title>
+    <link href="http://yoursite.com/2018/05/06/Java%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://yoursite.com/2018/05/06/Java管理系统/</id>
+    <published>2018-05-06T14:31:03.000Z</published>
+    <updated>2018-05-08T05:44:53.293Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="JavaWeb简单同学管理系统"><a href="#JavaWeb简单同学管理系统" class="headerlink" title="JavaWeb简单同学管理系统"></a>JavaWeb简单同学管理系统</h2><p>1.项目介绍</p><p>1.1功能介绍</p><pre><code>显示同学列表(编号、姓名、性别、电话、生日、爱好、简介)功能有 添加、更新、删除</code></pre><p>2.需要的jar包</p><pre><code>c3p0-0.9.1.2.jarcommons-dbutils-1.4.jarjstl.jarmysql-connector-java-5.1.7-bin.jarstandard.jar</code></pre><p>未完待续。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;JavaWeb简单同学管理系统&quot;&gt;&lt;a href=&quot;#JavaWeb简单同学管理系统&quot; class=&quot;headerlink&quot; title=&quot;JavaWeb简单同学管理系统&quot;&gt;&lt;/a&gt;JavaWeb简单同学管理系统&lt;/h2&gt;&lt;p&gt;1.项目介绍&lt;/p&gt;
+&lt;p&gt;1.1功
+      
+    
+    </summary>
+    
+      <category term="JavaWeb" scheme="http://yoursite.com/categories/JavaWeb/"/>
+    
+    
+      <category term="JavaWeb" scheme="http://yoursite.com/tags/JavaWeb/"/>
+    
+  </entry>
   
   <entry>
     <title>Java面向对象总结</title>
