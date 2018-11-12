@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MySQL," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Aopx's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="SQL语法在命令行中输入 mysql -uroot -p  然后输入密码 进入mysql， 注意：  SQL语句以分号结尾的 MySQL不区分大小写，但建议使用大写">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基础">
+<meta property="og:url" content="http://yoursite.com/2018/01/20/MySQL基础/index.html">
+<meta property="og:site_name" content="Aopx&#39;s blog">
+<meta property="og:description" content="SQL语法在命令行中输入 mysql -uroot -p  然后输入密码 进入mysql， 注意：  SQL语句以分号结尾的 MySQL不区分大小写，但建议使用大写">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-12T13:24:39.572Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL基础">
+<meta name="twitter:description" content="SQL语法在命令行中输入 mysql -uroot -p  然后输入密码 进入mysql， 注意：  SQL语句以分号结尾的 MySQL不区分大小写，但建议使用大写">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/20/MySQL基础/"/>
+
+
+
+
+
+  <title>MySQL基础 | Aopx's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/Aopx"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Aopx's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">积累点点滴滴</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/20/MySQL基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kyh">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/timg.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aopx's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T22:09:28+08:00">
+                2018-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL基础/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">热度
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,728
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+      
+      
+
+      
+        <h1 id="SQL语法"><a href="#SQL语法" class="headerlink" title="SQL语法"></a>SQL语法</h1><p>在命令行中输入 mysql -uroot -p  然后输入密码 进入mysql，</p>
+<p>注意：</p>
+<ul>
+<li>SQL语句以分号结尾的</li>
+<li>MySQL不区分大小写，但建议使用大写</li>
+</ul>
+<a id="more"></a>
+<h4 id="SQL语句分类"><a href="#SQL语句分类" class="headerlink" title="SQL语句分类"></a>SQL语句分类</h4><ol>
+<li><p>DDL（Data Definition Language）：数据定义语言，用来定义数据库对象：库、表、列等；</p>
+<blockquote>
+<p>创建、删除、修改：库、表结构！！！</p>
+</blockquote>
+</li>
+<li><p>DML（Data Manipulation Language）：数据操作语言，用来定义数据库记录（数据）；</p>
+<blockquote>
+<p>增、删、改：表记录</p>
+</blockquote>
+</li>
+<li><p>DCL（Data Control Language）：数据控制语言，用来定义访问权限和安全级别；</p>
+</li>
+<li><p>DQL<strong>*</strong>（Data Query Language）：数据查询语言，用来查询记录（数据）。</p>
+</li>
+</ol>
+<h4 id="DDL-数据库或表的结构操作"><a href="#DDL-数据库或表的结构操作" class="headerlink" title="DDL:数据库或表的结构操作"></a>DDL:数据库或表的结构操作</h4><p>查看所有数据库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SHOW DATABASES;</div></pre></td></tr></table></figure>
+<p>使用数据库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">USE 数据库名;</div></pre></td></tr></table></figure>
+<p>创建数据库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE DATABASE [IF NOT EXISTS] 数据库名 [CHARSET=utf8]</div></pre></td></tr></table></figure>
+<p>删除数据库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DROP DATABASE 数据库名;</div></pre></td></tr></table></figure>
+<p>修改数据库编码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER DATABASE mydb1 CHARACTER SET utf8</div></pre></td></tr></table></figure>
+<h4 id="数据类型-列类型"><a href="#数据类型-列类型" class="headerlink" title="数据类型(列类型)"></a>数据类型(列类型)</h4><ul>
+<li><p>INT:整型</p>
+</li>
+<li><p>DOUBLE：浮点型，例如double(5,2)表示最多5位，其中必须有2位小数，即最大值为999.99；</p>
+</li>
+<li><p>DECIMAL：浮点型，在表单钱方面使用该类型，因为不会出现精度缺失问题；</p>
+</li>
+<li><p>CHAR：固定长度字符串类型； char(255)，数据的长度不足指定长度，补足到指定长度！</p>
+</li>
+<li><p>VARCHAR：可变长度字符串类型； varchar(65535), zhangSan</p>
+</li>
+<li><p>TEXT(CLOB)：字符串类型；</p>
+</li>
+<li><p>DATE：日期类型，格式为：yyyy-MM-dd；</p>
+</li>
+<li><p>TIME：时间类型，格式为：hh:mm:ss</p>
+</li>
+<li><p>TIMESTAMP：时间戳类型；</p>
+</li>
+<li><p>DATETIME:混合日期和时间值，格式为:YYYYMMDD HHMMSS.</p>
+</li>
+</ul>
+<h5 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE [IF NOT EXISTS] 表名(ITCAST_0001</div><div class="line">  列名 列类型,</div><div class="line">  列名 列类型,</div><div class="line">  ...</div><div class="line">  列名 列类型</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>查看当前数据库中所有表名称：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SHOW TABLES;</div></pre></td></tr></table></figure>
+<p>查看指定表的创建语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SHOW CREATE TABLE 表名;</div></pre></td></tr></table></figure>
+<p>查看表结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DESC 表名;</div></pre></td></tr></table></figure>
+<p>删除表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DROP TABLE 表名;</div></pre></td></tr></table></figure>
+<p>修改表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">前缀：ALTER TABLE 表名</div></pre></td></tr></table></figure>
+<p>修改之添加列：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE 表名 ADD (</div><div class="line">     列名 列类型,</div><div class="line">     列名 列类型,</div><div class="line">     ...</div><div class="line">   );</div></pre></td></tr></table></figure>
+<p>   修改之修改列类型(如果被修改的列已存在数据，那么新的类型可能会影响到已存在数据)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE 表名 MODIFY 列名 列类型;</div></pre></td></tr></table></figure>
+<p>   修改之修改列名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE 表名 CHANGE 原列名 新列名 列类型;</div></pre></td></tr></table></figure>
+<p>   修改之删除列：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE 表名 DROP 列名;</div></pre></td></tr></table></figure>
+<p>   修改表名称：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE 原表名 RENAME TO 新表名;</div></pre></td></tr></table></figure>
+<h4 id="DML：对表的记录进行更新（增、删、改"><a href="#DML：对表的记录进行更新（增、删、改" class="headerlink" title="DML：对表的记录进行更新（增、删、改)"></a>DML：对表的记录进行更新（增、删、改)</h4><p> 插入数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">INTERT INTO 表名(列名1,列名2, ...) VALUES(列值1, 列值2, ...);</div></pre></td></tr></table></figure>
+<p>修改数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UPDATE 表名 SET 列名1=列值1, 列名2=列值2, ... [WHERE 条件]</div></pre></td></tr></table></figure>
+<p>运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">=、!=、&lt;&gt;、&gt;、&lt;、&gt;=、&lt;=、BETWEEN...AND、IN(...)、IS NULL、NOT、OR、AND</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">delete from 表名 (where 条件) 不加where条件时会删除表中所有的记录,一般数据库都有备份</div></pre></td></tr></table></figure>
+<h4 id="DCL：对用户的创建，及授权！"><a href="#DCL：对用户的创建，及授权！" class="headerlink" title="DCL：对用户的创建，及授权！"></a>DCL：对用户的创建，及授权！</h4><p>一个项目创建一个用户，一个项目对应的数据库只有一个!</p>
+<p>这个用户只能对这个数据库有权限，其他数据库你就操作不了！</p>
+<ol>
+<li><p>创建用户</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE USER 用户名@IP地址 IDENTIFIED BY &apos;密码&apos;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>用户只能在指定的IP地址上登录</p>
+</blockquote>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE USER 用户名@&apos;%&apos; IDENTIFIED BY &apos;密码&apos;;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>用户可以在任意IP地址上登录</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>给用户授权</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GRANT 权限1, … , 权限n ON 数据库.* TO 用户名@IP地址</div></pre></td></tr></table></figure>
+<blockquote>
+<p>权限、用户、数据库<br>给用户分派在指定的数据库上的指定的权限<br>例如；GRANT CREATE,ALTER,DROP,INSERT,UPDATE,DELETE,SELECT ON mydb1.* TO user1@localhost;</p>
+<ul>
+<li>给user1用户分派在mydb1数据库上的create、alter、drop、insert、update、delete、select权限</li>
+</ul>
+</blockquote>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GRANT ALL ON 数据库.* TO 用户名@IP地址;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>给用户分派指定数据库上的所有权限</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>撤销授权</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">REVOKE 权限1, … , 权限n ON 数据库.* FROM 用户名@IP地址;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>撤消指定用户在指定数据库上的指定权限<br>例如；REVOKE CREATE,ALTER,DROP ON mydb1.* FROM user1@localhost;</p>
+<ul>
+<li>撤消user1用户在mydb1数据库上的create、alter、drop权限</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>查看权限</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SHOW GRANTS FOR 用户名@IP地址</div></pre></td></tr></table></figure>
+<blockquote>
+<p>查看指定用户的权限</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>删除用户</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DROP USER 用户名@IP地址</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="DQL：对表的记录的查询"><a href="#DQL：对表的记录的查询" class="headerlink" title="DQL：对表的记录的查询"></a>DQL：对表的记录的查询</h4><p>查看所有列：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM 表名</div></pre></td></tr></table></figure>
+<p>查看指定列：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT 列1 [, 列2, ... 列N] FROM 表名;</div></pre></td></tr></table></figure>
+<p>完全重复的记录只一次：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT DISTINCT * | 列1 [, 列2, ... 列N] FROM 表名;</div></pre></td></tr></table></figure>
+<p>列运算(数量类型的列可以做加、减、乘、除运算):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT 列*1.5 FROM 表名;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT 列1+列2 FROM 表名;</div></pre></td></tr></table></figure>
+<p>注意：如果和null运算就会变null，要使用ifnull(列名1,0)  0替换null</p>
+<p>字符串类型可以做连续运算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT CONCAT(&apos;$&apos;, 列名) FROM 表名;</div></pre></td></tr></table></figure>
+<p>给列名起别名:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select 列名1 (as) 别名1,列名2 (as) 别名2 from 表名；</div></pre></td></tr></table></figure>
+<p>条件查询</p>
+<p>1.条件查询。在后面添加where指定条件: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from 表名 where 列名＝指定值;</div></pre></td></tr></table></figure>
+<p>2.模糊查询：当你想查询所有姓张的记录。用到关键字like。eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from 表名 where 列名 like &apos;张_&apos;;</div></pre></td></tr></table></figure>
+<p>(_代表匹配任意一个字符，％代表匹配0～n个任意字符)。</p>
+<p>排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM WHERE 表名 ORDER BY 列名 ASC;</div></pre></td></tr></table></figure>
+<p>降序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM WHERE 表名 ORDER BY 列名 DESC;</div></pre></td></tr></table></figure>
+<p>聚合函数</p>
+<p> 聚合函数用来做某列的纵向运算。<br>1) COUNT</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT COUNT(*) FROM 表名;</div></pre></td></tr></table></figure>
+<p>  –&gt; 计算emp表中所有列都不为NULL的记录的行数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT COUNT(列名) FROM 表名;</div></pre></td></tr></table></figure>
+<p>  –&gt; 云计算表中列不为NULL的记录的行数<br>2) MAX</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT MAX(列名) FROM 表名;</div></pre></td></tr></table></figure>
+<p>  –&gt; 查询最高列<br>3) MIN</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT MIN(列名) FROM 表名;</div></pre></td></tr></table></figure>
+<p>  –&gt; 查询最低列<br>4) SUM</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT SUM(列名) FROM 表名;</div></pre></td></tr></table></figure>
+<p>  –&gt; 查询列名合<br>5) AVG</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT AVG(列名) FROM 表名;</div></pre></td></tr></table></figure>
+<p>  –&gt; 查询平均</p>
+<h4 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h4><p>分组查询的信息都是组的信息，不能查到个人的信息，其中查询组的信息是通过聚合函数得到的。</p>
+<p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select 分组列名，聚合函数1,聚合函数2 from 表名 group by 该分组列名；</div></pre></td></tr></table></figure>
+<p>其中分组列名需要的条件是该列名中有重复的信息。</p>
+<p>分组查询前，还可以通过关键字where先把满足条件的人分出来，再分组。语法为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select 分组列，聚合函数 from 表名 where 条件 group by 分组列；</div></pre></td></tr></table></figure>
+<p>分组查询后，也可以通过关键字having把组信息中满足条件的组再细分出来。语法为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select 分组列，聚合函数 from 表名 where 条件 group by 分组列 having 聚合函数或列名(条件)；</div></pre></td></tr></table></figure>
+<p>limit子句</p>
+<p>LIMIT用来限定查询结果的起始行，以及总行数。</p>
+<p>  例如：查询起始行为第5行，一共查询3行记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT * FROM 表名LIMIT 4, 3;</div></pre></td></tr></table></figure>
+<p>(下标从0开始)</p>
+<p>  –&gt; 其中4表示从第5行开始，其中3表示一共查询3行。即第5、6、7行记录。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/06/Java面向对象总结/" rel="next" title="Java面向对象总结">
+                <i class="fa fa-chevron-left"></i> Java面向对象总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/timg.png"
+                alt="Kyh" />
+            
+              <p class="site-author-name" itemprop="name">Kyh</p>
+              <p class="site-description motion-element" itemprop="description">Java</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL语法"><span class="nav-number">1.</span> <span class="nav-text">SQL语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL语句分类"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">SQL语句分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DDL-数据库或表的结构操作"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">DDL:数据库或表的结构操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型-列类型"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">数据类型(列类型)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建表"><span class="nav-number">1.0.0.3.1.</span> <span class="nav-text">创建表</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DML：对表的记录进行更新（增、删、改"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">DML：对表的记录进行更新（增、删、改)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DCL：对用户的创建，及授权！"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">DCL：对用户的创建，及授权！</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DQL：对表的记录的查询"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">DQL：对表的记录的查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组查询"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">分组查询</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kyh</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共5.1k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="Java面向对象总结java是一门面向对象的语言 面向对象三大特征：封装、继承、多态">
+<meta name="description" content="Java面向对象总结两个重要概念 : 类(class)和对象(object，也被称为实例)  三大特征：封装 继承 多态 类：类是一组相关的属性和行为的集合，类一般都是泛指某一种事物，是一个抽象的概念 对象：就是该类事物的具体体现， 具体存在的实体">
 <meta name="keywords" content="Java基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java面向对象总结">
 <meta property="og:url" content="http://yoursite.com/2017/12/06/Java面向对象总结/index.html">
 <meta property="og:site_name" content="Aopx&#39;s blog">
-<meta property="og:description" content="Java面向对象总结java是一门面向对象的语言 面向对象三大特征：封装、继承、多态">
+<meta property="og:description" content="Java面向对象总结两个重要概念 : 类(class)和对象(object，也被称为实例)  三大特征：封装 继承 多态 类：类是一组相关的属性和行为的集合，类一般都是泛指某一种事物，是一个抽象的概念 对象：就是该类事物的具体体现， 具体存在的实体">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-07T11:49:00.560Z">
+<meta property="og:updated_time" content="2018-11-12T12:52:10.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java面向对象总结">
-<meta name="twitter:description" content="Java面向对象总结java是一门面向对象的语言 面向对象三大特征：封装、继承、多态">
+<meta name="twitter:description" content="Java面向对象总结两个重要概念 : 类(class)和对象(object，也被称为实例)  三大特征：封装 继承 多态 类：类是一组相关的属性和行为的集合，类一般都是泛指某一种事物，是一个抽象的概念 对象：就是该类事物的具体体现， 具体存在的实体">
 
 
 
@@ -100,7 +100,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     version: '5.1.3',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -344,7 +344,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,095
+                  2,751
                 </span>
               
 
@@ -360,7 +360,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  10
                 </span>
               
             </div>
@@ -382,159 +382,117 @@
       
 
       
-        <h2 id="Java面向对象总结"><a href="#Java面向对象总结" class="headerlink" title="Java面向对象总结"></a>Java面向对象总结</h2><p>java是一门面向对象的语言</p>
-<p>面向对象三大特征：<strong>封装、继承、多态</strong></p>
-<a id="more"></a>
-<h3 id="一、类和对象"><a href="#一、类和对象" class="headerlink" title="一、类和对象"></a><strong>一、类和对象</strong></h3><p>类：对现实中的事物描述</p>
-<p>对象：就是这类事物的某一个体</p>
-<p>成员变量+动态方法=对象</p>
-<p>创建对象：类名 对象名 = new 类名()</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Student a</span> = new Student();</div></pre></td></tr></table></figure>
-<p>使用对象：对象.属性   /   对象.方法名()</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a.tell()<span class="comment">;</span></div></pre></td></tr></table></figure>
-<h4 id="成员变量与局部变量"><a href="#成员变量与局部变量" class="headerlink" title="成员变量与局部变量"></a>成员变量与局部变量</h4><p>成员变量：在类中定义，用来描述对象将要有什么。（作用域在整个类内部都是可见的）</p>
-<p>局部变量：在类的方法中定义，在方法中临时保存数据。（作用域仅限于定义它的方法）</p>
-<p>区别：</p>
-<p>①作用域不用</p>
-<p>②两类变量同名时，局部变量的优先级更高</p>
-<p>③初始值不同：Java会给成员变量一个初始值，不会给局部变量赋予初始值</p>
-<h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><p>定义在Java中的一个用来初始化对象的方法。</p>
-<p>①使用new+构造方法 创建一个新的对象。</p>
-<p>②名称与类名相同且没有返回值。</p>
-<p>③当没有指定构造方法时，系统会自动添加无参的构造方法。</p>
-<p>④当有指定构造方法时，无论是有参、无参的构造方法，都不会自动添加无参的构造方法。</p>
-<p>⑤构造方法可重载：方法名相同，但参数不同，调用时会自动根据不同的参数选择相应的方法。</p>
-<p>⑥构造方法不但可以给对象的属性赋值，还可以保证给对象的属性赋一个合理的值（在构造函数中增加判断）。</p>
-<h4 id="static静态变量（也称类成员）"><a href="#static静态变量（也称类成员）" class="headerlink" title="static静态变量（也称类成员）"></a>static静态变量（也称类成员）</h4><p>①它属于整个类所有，而不是某个对象所有，被类的所有对象所共享。</p>
-<p>②静态成员可使用类名直接访问，也可以使用对象名进行访问。</p>
-<p>③静态成员属于整个类，当系统第一次使用该类时，就会为其分配内存空间直到该类被卸载才会进行资源回收。</p>
-<h4 id="static静态方法（也称类方法）"><a href="#static静态方法（也称类方法）" class="headerlink" title="static静态方法（也称类方法）"></a>static静态方法（也称类方法）</h4><p>①静态方法中可以直接调用同类中的静态成员，但不能直接调用非静态成员。</p>
-<p>②如果系统在静态方法中调用非静态变量，可通过创建类的对象，然后通过对象来访问非静态变量。</p>
-<p>③在普通成员方法中，则可以直接访问同类的非静态变量和静态变量。</p>
-<p>④静态方法中不能直接调用非静态方法，需要通过对象来访问非静态方法。</p>
-<h4 id="初始化块"><a href="#初始化块" class="headerlink" title="初始化块"></a>初始化块</h4><p>①普通初始化块</p>
-<p>{ </p>
-<p>xxx = xxx;</p>
-<p>}</p>
-<p>②静态初始化块</p>
-<p>static {</p>
-<p>xxx = xxx;</p>
-<p>}</p>
-<p>③执行顺序：静态初始化块最先被执行–&gt;普通初始化块–&gt;构造方法</p>
-<h3 id="二、封装"><a href="#二、封装" class="headerlink" title="二、封装"></a>二、封装</h3><p>比如电视机，你是看不到内部的东西，但可以使用遥控器就调用它。</p>
-<p>1.提高数据的安全性。</p>
-<p>2.操作简单</p>
-<p>3.隐藏了实现</p>
-<p>使用private修饰需要封装的属性，用set和get设置和获取属性。</p>
-<h4 id="Java中的包"><a href="#Java中的包" class="headerlink" title="Java中的包"></a>Java中的包</h4><p>①作用：管理Java文件，解决同名文件的冲突</p>
-<p>②必须放在Java源程序的第一行，包名间用”.”号隔开</p>
-<p>③包的使用：可以通过import关键字在某个文件中使用其它文件中的类，Java包的命名是全小写字母</p>
-<p>private ：本类访问（私有类）</p>
-<p>default ：表示默认，不仅本类访问，而且是同包可见。</p>
-<p>Protected：同包可见+不同包的子类可见</p>
-<p>Public ：表示所有的地方均可见</p>
-<hr>
-<p>Java中this关键字</p>
-<p>代表当前对象</p>
-<p>this.属性：操作当前对象的属性</p>
-<p>this.方法：调用当前对象的方法</p>
-<p>内部类：</p>
-<h3 id="三、继承"><a href="#三、继承" class="headerlink" title="三、继承"></a>三、继承</h3><p>  class 子类 extends 父类{</p>
-<p>  }</p>
-<p>子类只能有一个父类</p>
-<p>方法的重写：</p>
-<p>① 子类可重写从父类继承的方法，当调用方法时会优先调用子类的方法。</p>
-<p>② 返回值类型、方法名、参数类型及个数 都要与父类继承的方法相同，才叫方法的重写。</p>
-<p><strong>继承要注意的事项</strong>：</p>
+        <h2 id="Java面向对象总结"><a href="#Java面向对象总结" class="headerlink" title="Java面向对象总结"></a>Java面向对象总结</h2><p>两个重要概念 : 类(class)和对象(object，也被称为实例)</p>
+<p> 三大特征：封装 继承 多态</p>
+<p>类：类是一组相关的<strong>属性和行为</strong>的集合，类一般都是泛指某一种事物，是一个抽象的概念</p>
+<p>对象：就是该类事物的具体体现， 具体存在的实体</p>
+ <a id="more"></a>
+<p>类：学生</p>
+<p>对象 ： 张三、李四、kyh </p>
+<h3 id="定义一个类"><a href="#定义一个类" class="headerlink" title="定义一个类"></a>定义一个类</h3><p>成员变量+成员方法</p>
+<p>通常情况下，一个类并不能直接使用，需要根据类创建一个对象，才能使用。<br>1.导包：也就是指出需要使用的类，在什么位置。<br>import包名称.类名称；<br>import cn.itcast.daye6.demoe1.Student；对于和当前类属于同一个包的情况，可以省略导包语句不写。<br>2.创建，格式：<br>类名称 对象名 = new 类名称（）；<br>Student stu = new Student（）；<br>3.使用，分为两种情况：<br>使用成员变量：对象名.成员变量名<br>使用成员方法：对象名.成员方法名（参数）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</div><div class="line">   <span class="comment">//定义变量</span></div><div class="line">   <span class="comment">//学号</span></div><div class="line">   <span class="keyword">int</span> id;   </div><div class="line">   <span class="comment">//姓名</span></div><div class="line">   String name;</div><div class="line">   <span class="comment">//性别</span></div><div class="line">   <span class="keyword">char</span> sex;  </div><div class="line">   <span class="comment">//年龄</span></div><div class="line">   <span class="keyword">int</span> age;</div><div class="line">   <span class="comment">//定义方法</span></div><div class="line">   <span class="comment">//学习的方法</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">study</span><span class="params">()</span> </span>&#123;</div><div class="line">      System.out.println(name+<span class="string">"我爱学习"</span>);</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//吃饭的方法</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</div><div class="line">      System.out.println(name+<span class="string">"饿了就吃饭"</span>);</div><div class="line">   &#125;</div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">      <span class="comment">// TODOAuto-generated method stub</span></div><div class="line">      <span class="comment">//创建一个对象 </span></div><div class="line">      <span class="comment">//格式 ： 类名 对象名 = new 类名();</span></div><div class="line">      Student s = <span class="keyword">new</span> Student();</div><div class="line">      <span class="comment">//通过对象名.变量名的方式使用成员变量</span></div><div class="line">      s.id=<span class="number">12</span>;</div><div class="line">      s.name=<span class="string">"kyh"</span>;</div><div class="line">      s.sex=<span class="string">'男'</span>;</div><div class="line">      s.age=<span class="number">19</span>;</div><div class="line"></div><div class="line">      System.out.println(s.id);</div><div class="line">      System.out.println(s.name);</div><div class="line">      System.out.println(s.sex);</div><div class="line">      System.out.println(s.age);</div><div class="line">      <span class="comment">//通过对象名.方法名(...)的方式调用方法</span></div><div class="line">      s.study();</div><div class="line">      s.eat();</div><div class="line">   &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>方法重载发生的条件</strong></p>
+<ul>
+<li>发生在同一个类中.</li>
+<li>方法名相同</li>
+<li>参数列表不同(类型，个数，顺序)</li>
+</ul>
+<h4 id="成员变量和局部变量"><a href="#成员变量和局部变量" class="headerlink" title="成员变量和局部变量"></a>成员变量和局部变量</h4><p><strong>成员变量</strong>：写在类体的里面，方法体的外面，声明时可以不进行初始化值，可以被本类或其他类的方法进行调用。<br><strong>局部变量</strong>：写在方法体的里面，声明时必须进行初始化，只能在声明局部变量的方法内进行调用。</p>
+<h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><p>什么是封装？</p>
+<p>封装指的是隐藏对象的属性和实现的细节,提供公共方式来让外部访问</p>
+<p>封装的好处：</p>
 <ol>
-<li><p>千万不要为了减少重复代码而去继承，只有真正存在着继承关系的时候才去继承。</p>
-</li>
-<li><p>父类私有的成员不能被继承。</p>
-</li>
-<li><p>父类的构造函数不能被继承。</p>
-</li>
-<li><p>创建子类对象时默认会先调用父类无参的构造函数。</p>
-</li>
+<li>隐藏类的实现细节</li>
+<li>提高安全性</li>
+<li>便于修改，提高代码的可维护性</li>
 </ol>
-<p>super 关键字是代表父类空间的引用</p>
-<p>重写：目前的问题：父类的功能无法满足子类的需求。</p>
-<p>方法重写的前提： 必须要存在继承的关系。</p>
-<p>方法的重写: 子父类出了同名的函数，这个我们就称作为方法的重写。</p>
-<p>什么是时候要使用方法的重写：父类的功能无法满足子类的需求时。</p>
-<p>方法重写要注意的事项：</p>
-<p>1.方法重写时， 方法名与形参列表必须一致。</p>
-<p>2.方法重写时，子类的权限修饰符必须要大于或者等于父类的权限修饰符。</p>
-<p>3.方法重写时，子类的返回值类型必须要小于或者 等于父类的返回值类型。</p>
-<p>4.方法重写时， 子类抛出的异常类型要小于或者等于父类抛出的异常类型。</p>
-<p>Exception(最坏)</p>
-<p>RuntimeException(小坏)</p>
-<p>可以通过super关键字进行父类的重写函数的调用。</p>
-<p>instanceof关键字</p>
-<p>instanceof关键字的作用：判断一个对象是否属于指定的类别。</p>
-<p>抽象类</p>
-<p>①应用场景：在某些情况下，某个父类只是知道其子类应该包含怎样的方法，但无法准确知道这些子类如何实现这些方法。</p>
-<p>②从多个具有相同特征的类中抽象出一个抽象类，以这个抽象类作为子类的模板，从而避免了子类设计的随意性。</p>
-<p>③限制规定子类必须实现某些方法，但不关注实现细节。</p>
-<p>④ abstract定义抽象类</p>
-<p>⑤abstract定义抽象方法，只有声明，不需要实现</p>
-<p>⑥包含抽象方法的类是抽象类</p>
-<p>⑦抽象类中可以包含普通的方法，也可以没有抽象方法</p>
-<p>⑧抽象类不能直接创建，可以定义引用变量</p>
-<p>接口</p>
-<p>接口的定义格式：</p>
-<p>interface 接口名{</p>
+<p>private是封装的一种体现。<br>​        封装：类，方法，private修饰成员变量</p>
+<h3 id="private关键字"><a href="#private关键字" class="headerlink" title="private关键字"></a>private关键字</h3><p>(1)私有的意义，可以修饰成员变量和成员方法<br>​    (2)特点：<br>​        被private修饰的后的成员只能在本类中被访问<br>​    (3)private的应用：<br>​        以后再写一个类的时候：<br>​            把所有的成员变量给private了<br>​            提供对应的getXxx()/setXxx()方法</p>
+<h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><p>(1)作用：用于对对象的数据进行初始化<br>​    (2)格式：</p>
+<p>​        A:方法名和类名相同<br>​        B:没有返回值类型，连void都不能有<br>​        C:没有返回值<br>(3)构造方法的注意事项<br>​    A:如果我们<strong>没写</strong>构造方法，系统将<strong>提供一个默认的无参构造方法</strong><br>​    B:如果我们给出了构造方法，系统将不再提供默认构造方法<br>​        如果这个时候，我们要使用无参构造方法，就必须自己给出。<br>​        推荐：永远手动自己给出无参构造方法。<br>(4)给成员变量赋值的方式<br>​    A:setXxx()<br>​    B:带参构造方法</p>
+<h3 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h3><p>​    (1)代表当前类的引用对象<br>​        记住：哪个对象调用方法，该方法内部的this就代表那个对象<br>​    (2)this的应用场景：<br>​        A:解决了局部变量隐藏成员变量的问题</p>
+<h3 id="Static"><a href="#Static" class="headerlink" title="Static"></a>Static</h3><p>存放在方法区里</p>
+<p>static可以修饰变量，被static修饰的变量叫做静态变量，程序运行时静态变量存放在方法区里面，因此，静态变量在类加载阶段赋值，并且只赋值一次。</p>
+<p>静态方法<br>​    可以使用“类名.”方式调用.也可以用“引用.”，即使用的是“引用.”，底层还是用的“类名.”<br>​    静态方法中不能直接访问非静态数据.<br>​    静态方法中不能使用this</p>
+<h3 id="什么是代码块？"><a href="#什么是代码块？" class="headerlink" title="什么是代码块？"></a>什么是代码块？</h3><p>使用{}括起来的代码被称为代码块，根据其位置和声明的不同可以分为下面4种：</p>
+<ul>
+<li><strong>局部代码块</strong>，在方法中出现，限定变量生命周期，及早释放，提高内存利用率</li>
+<li><strong>构造代码块</strong>，在类中方法外出现；多个构造方法方法中相同的代码存放到一起，每次调用构造都执行，并且在构造方法前执行</li>
+<li><strong>静态代码块</strong>， 在类中方法外出现，并加上static修饰；用于给类进行初始化，在加载的时候就执行，并且只执行一次。一般用于加载驱动。</li>
+<li><strong>同步代码块</strong>  ？？？</li>
+</ul>
+<p>静态语句块中的内容只会执行一次</p>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>Java通过extends关键字来实现继承</p>
+<p>继承描述的是两个类之间的关系，被继承的类叫做父类，继承的类叫做子类</p>
+<p>继承的好处：<br>​        A:提高了代码的复用性<br>​        B:提高了代码的维护性<br>​        C:让类与类产生了一个关系，是多态的前提</p>
+<p>继承的弊端：<br>​        A:让类的耦合性增强。这样某个类的改变，就会影响其他和该类相关的类。<br>​            原则：低耦合，高内聚。<br>​            耦合：类与类的关系<br>​            内聚：自己完成某件事情的能力</p>
+<p>​        B:打破了封装性</p>
+<p>Java中继承的特点<br>​        A:Java中类只支持单继承<br>​        B:Java中可以多层(重)继承(继承体系)</p>
+<h3 id="如何使用extends来实现继承关系？"><a href="#如何使用extends来实现继承关系？" class="headerlink" title="如何使用extends来实现继承关系？"></a>如何使用extends来实现继承关系？</h3><p>[修饰符列表]  class 子类  extends 父类名{</p>
+<p>​    类体；</p>
 <p>}</p>
-<p>接口要注意的事项 ：</p>
-<ol>
-<li><p>接口是一个特殊的类。</p>
+<p>继承的注意事项：<br>​        A:子类不能继承父类的私有成员(成员方法和成员变量)<br>​        B:子类不能继承父类的构造方法，但是可以通过super去访问<br>​        C:不要为了部分功能而去继承</p>
+<h3 id="什么是super"><a href="#什么是super" class="headerlink" title="什么是super?"></a>什么是super?</h3><p>super代表的是当前子类对象中的父类型特征。</p>
+<p>如果父类和子类都有一个name属性， 想在子类中访问父类中的name属性，就要调用super关键字</p>
+<p>子类重写了父类的某个方法，子类需要调用 这个方法 就要使用super</p>
+<p><strong>注意</strong>：super不能用在静态方法中。</p>
+<h3 id="super和this的对比"><a href="#super和this的对比" class="headerlink" title="super和this的对比"></a>super和this的对比</h3><ul>
+<li>this和super分别代表什么<ul>
+<li>this:代表当前对象的引用</li>
+<li>super:代表的是当前子类对象中的父类型特征</li>
+</ul>
 </li>
-<li><p>接口的成员变量默认的修饰符为： public static final。那么也就是说接口中的成员变量都是常量。</p>
+<li>this和super的使用区别<ul>
+<li>调用成员变量<ul>
+<li>this.成员变量： 调用本类的成员变量</li>
+<li>super.成员变量： 调用父类的成员变量</li>
+</ul>
 </li>
-<li><p>接口中的方法都是抽象的方法，默认的修饰符为： public abstract。</p>
+<li>调用构造方法<ul>
+<li>this(…) ：调用本类的构造方法</li>
+<li>super(…)：调用父类的构造方法</li>
+</ul>
 </li>
-<li><p>接口不能创建对象。</p>
+<li>调用成员方法<ul>
+<li>this.成员方法：调用本类的成员方法</li>
+<li>super.成员方法：调用父类的成员方法</li>
+</ul>
 </li>
-<li><p>接口是没有构造方法的。</p>
+</ul>
 </li>
-<li><p>接口是给类去实现使用的，非抽象类实现一个接口的时候，必须要把接口中所有方法全部实现。</p>
-</li>
-</ol>
-<p>实现接口的格式：</p>
-<p>class  类名 implements接口名{</p>
-<p>}</p>
-<p>interface A{</p>
-<p>int x = 1;</p>
-<p>public int getArea();</p>
-<p>}</p>
-<p>class Demo implements A{</p>
-<p>public int getArea(){</p>
-<p>return A.x;</p>
-<p>}</p>
-<p>}</p>
-<p>多态 </p>
-<p>多态：一个对象具备多种形态。(父类的引用类型变量指向了子类的对象或者是接口的引用类型变量指向了接口实现类的对象)</p>
-<p>多态的前提：必须存在继承或者实现 关系。</p>
-<pre><code>Animal  a  = new   dog();
-</code></pre><p>多态要注意的细节：</p>
-<ol>
-<li><p>多态情况下，子父类存在同名的成员变量时，访问的是父类的成员变量。</p>
-</li>
-<li><p>多态情况下，子父类存在同名的非静态的成员函数时，访问的是子类的成员函数。</p>
-</li>
-<li><p>多态情况下，子父类存在同名的静态的成员函数时，访问的是父类的成员函数。</p>
-</li>
-<li><p>多态情况下，不能访问子类特有的成员。</p>
-</li>
-</ol>
-<p>总结：多态情况下，子父类存在同名的成员时，访问的都是父类的成员，除了在同名非静态函数时才是访问子类的。</p>
-<p>多态的应用：</p>
-<ol>
-<li><p>多态用于形参类型的时候，可以接收更多类型的数据 。</p>
-</li>
-<li><p>多态用于返回值类型的时候，可以返回更多类型的数据。</p>
-</li>
-</ol>
-<p>多态的好处： 提高了代码的拓展性。</p>
+</ul>
+<h4 id="Java继承中的成员关系"><a href="#Java继承中的成员关系" class="headerlink" title="Java继承中的成员关系"></a>Java继承中的成员关系</h4><p>​        A:成员变量<br>​            a:子类的成员变量名称和父类中的成员变量名称不一样，这个太简单<br>​            b:子类的成员变量名称和父类中的成员变量名称一样，这个怎么访问呢?<br>​                子类的方法访问变量的查找顺序：<br>​                    在子类方法的局部范围找，有就使用。<br>​                    在子类的成员范围找，有就使用。<br>​                    在父类的成员范围找，有就使用。<br>​                    找不到，就报错。<br>​        B:构造方法<br>​            <strong>a:子类的构造方法默认会去访问父类的无参构造方法</strong><br>​                是为了子类访问父类数据的初始化<br>​            b:父类中如果没有无参构造方法，怎么办?<br>​                <strong>子类通过super去明确调用带参构造</strong><br>​                <strong>子类通过this调用本身的其他构造，但是一定会有一个去访问了父类的构造</strong><br>​                <strong>让父类提供无参构造</strong><br>​        C:成员方法<br>​            a:子类的成员方法和父类中的成员方法名称不一样，这个太简单<br>​            b:子类的成员方法和父类中的成员方法名称一样，这个怎么访问呢?<br>​                通过子类对象访问一个方法的查找顺序：<br>​                    在子类中找，有就使用<br>​                    在父类中找，有就使用<br>​                    找不到，就报错</p>
+<h3 id="什么是重写？"><a href="#什么是重写？" class="headerlink" title="什么是重写？"></a>什么是重写？</h3><p>重写，也叫做覆盖，当父类中的方法无法满足子类需求时，子类可以将父类的方法进行重写编写来满足需求。比如孩子继承了父亲的房子，可以将房子重新装修。<br>方法重写的条件：</p>
+<ul>
+<li>两个类必须是继承关系</li>
+<li>必须具有相同的方法名，相同的返回值类型，相同的参数列表.</li>
+<li>重写的方法不能比被重写的方法拥有更低的访问权限。</li>
+<li>重写的方法不能比被重写的方法抛出更宽泛的异常。(关于异常后面的章节再讲。)</li>
+<li>私有的方法不能被重写。</li>
+<li>构造方法无法被重写，因为构造方法无法被继承。</li>
+<li>静态的方法不存在重写。</li>
+<li>重写指的是成员方法，和成员变量无关。</li>
+</ul>
+<h4 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h4><p>final 可以修饰类 、 方法、 变量</p>
+<p>特点：</p>
+<p>final 可以修饰类 ，该类不能被继承</p>
+<p>final 可以修饰方法，不能被重写</p>
+<p>final 可以修饰变量，是一个常量</p>
+<p>A:局部变量<br>​            a:基本类型 值不能发生改变<br>​            b:引用类型 地址值不能发生改变，但是对象的内容是可以改变的<br>​        B:初始化时机<br>​            a:只能初始化一次。<br>​            b:常见的给值<br>​                定义的时候。(推荐)<br>​                构造方法中。</p>
+<h4 id="多态-掌握"><a href="#多态-掌握" class="headerlink" title="多态(掌握)"></a>多态(掌握)</h4><p>​    (1)同一个对象在不同时刻体现出来的不同状态。<br>​    (2)多态的前提：<br>​        A:有继承或者实现关系。<br>​        B:有方法重写。<br>​        C:有父类或者父接口引用指向子类对象。</p>
+<p>​        多态的分类：<br>​        </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">a:具体类多态</div><div class="line">	class Fu &#123;&#125;</div><div class="line">	class Zi extends Fu &#123;&#125;</div><div class="line">	Fu f = new Zi();</div><div class="line">b:抽象类多态</div><div class="line">	abstract class Fu &#123;&#125;</div><div class="line">	class Zi extends Fu &#123;&#125;</div><div class="line">	</div><div class="line">	Fu f = new Zi();</div><div class="line">c:接口多态</div><div class="line">	interface Fu &#123;&#125;</div><div class="line">	class Zi implements Fu &#123;&#125;</div><div class="line">	</div><div class="line">	Fu f = new Zi();</div></pre></td></tr></table></figure>
+<p>​        多态的好处：<br>​        A:提高代码的维护性(继承体现)<br>​        B:提高代码的扩展性(多态体现)</p>
+<p>多态中的转型<br>​        A:向上转型<br>​            从子到父<br>​        B:向下转型<br>​            从父到子</p>
+<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><p>interface关键字</p>
+<p>接口只能出现常量和抽象方法</p>
+<p>接口中没有构造方法，因此不能创建对象</p>
+<p>接口支持多继承</p>
+<p>一个类可以实现多个接口</p>
+<p>好处：</p>
+<p>可以使项目分层</p>
+<p>降低了代码之间的耦合度，提高了代码的可插拔性</p>
 
       
     </div>
@@ -575,8 +533,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/14/Java-数组/" rel="next" title=" Java 数组">
-                <i class="fa fa-chevron-left"></i>  Java 数组
+              <a href="/2017/11/15/Java代码块/" rel="next" title="Java代码块">
+                <i class="fa fa-chevron-left"></i> Java代码块
               </a>
             
           </div>
@@ -585,8 +543,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/06/Java管理系统/" rel="prev" title="JavaWeb同学管理系统">
-                JavaWeb同学管理系统 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/20/MySQL基础/" rel="prev" title="MySQL基础">
+                MySQL基础 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -658,7 +616,7 @@
                 alt="Kyh" />
             
               <p class="site-author-name" itemprop="name">Kyh</p>
-              <p class="site-description motion-element" itemprop="description">JAVAWeb || 互联网</p>
+              <p class="site-description motion-element" itemprop="description">Java</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -668,7 +626,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -732,7 +690,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java面向对象总结"><span class="nav-number">1.</span> <span class="nav-text">Java面向对象总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、类和对象"><span class="nav-number">1.1.</span> <span class="nav-text">一、类和对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#成员变量与局部变量"><span class="nav-number">1.1.1.</span> <span class="nav-text">成员变量与局部变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造方法"><span class="nav-number">1.1.2.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#static静态变量（也称类成员）"><span class="nav-number">1.1.3.</span> <span class="nav-text">static静态变量（也称类成员）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#static静态方法（也称类方法）"><span class="nav-number">1.1.4.</span> <span class="nav-text">static静态方法（也称类方法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#初始化块"><span class="nav-number">1.1.5.</span> <span class="nav-text">初始化块</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、封装"><span class="nav-number">1.2.</span> <span class="nav-text">二、封装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Java中的包"><span class="nav-number">1.2.1.</span> <span class="nav-text">Java中的包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、继承"><span class="nav-number">1.3.</span> <span class="nav-text">三、继承</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java面向对象总结"><span class="nav-number">1.</span> <span class="nav-text">Java面向对象总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义一个类"><span class="nav-number">1.1.</span> <span class="nav-text">定义一个类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#成员变量和局部变量"><span class="nav-number">1.1.1.</span> <span class="nav-text">成员变量和局部变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#封装"><span class="nav-number">1.1.2.</span> <span class="nav-text">封装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#private关键字"><span class="nav-number">1.2.</span> <span class="nav-text">private关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#构造方法"><span class="nav-number">1.2.1.</span> <span class="nav-text">构造方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this关键字"><span class="nav-number">1.3.</span> <span class="nav-text">this关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Static"><span class="nav-number">1.4.</span> <span class="nav-text">Static</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是代码块？"><span class="nav-number">1.5.</span> <span class="nav-text">什么是代码块？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#继承"><span class="nav-number">1.5.1.</span> <span class="nav-text">继承</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用extends来实现继承关系？"><span class="nav-number">1.6.</span> <span class="nav-text">如何使用extends来实现继承关系？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是super"><span class="nav-number">1.7.</span> <span class="nav-text">什么是super?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#super和this的对比"><span class="nav-number">1.8.</span> <span class="nav-text">super和this的对比</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Java继承中的成员关系"><span class="nav-number">1.8.1.</span> <span class="nav-text">Java继承中的成员关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是重写？"><span class="nav-number">1.9.</span> <span class="nav-text">什么是重写？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#final关键字"><span class="nav-number">1.9.1.</span> <span class="nav-text">final关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多态-掌握"><span class="nav-number">1.9.2.</span> <span class="nav-text">多态(掌握)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口"><span class="nav-number">1.9.3.</span> <span class="nav-text">接口</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -776,14 +734,14 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
 
 
 
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共2.4k字</span>
+  <span class="post-count">博客全站共5.1k字</span>
 </div>
         
 <div class="busuanzi-count">
@@ -900,6 +858,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
